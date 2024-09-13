@@ -66,7 +66,7 @@ def annotate(name):
     origin =(881,720)
     green_rgb= (10, 93, 46)
     green_hex = "#0a5d2e"
-    font_path = "arial.ttf"
+    font_path = "Arial.ttf"
     font_size = 100
     size = None
     font = ImageFont.truetype(root_path+font_path, font_size)
