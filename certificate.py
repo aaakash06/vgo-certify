@@ -53,7 +53,7 @@ def annotate(name):
     cv2.putText(certi, name, (textX, 642),font, fontScale, (0, 0, 0), thickness=3)    
     typee = contributions[name][0]
     title = contributions[name][1]
-    original = cv2.putText(certi, f"{typee} titled \"{title}.\"", (983,759),cv2.FONT_HERSHEY_SIMPLEX, 1.4, (46, 93, 10), thickness=2)    
+    original = cv2.putText(certi, f"{typee} titled \"{title}.\"", (884,761),cv2.FONT_HERSHEY_SIMPLEX, 1.4, (46, 93, 10), thickness=2)    
     cv2.imwrite("Certificate_{}.jpg".format(name),original)
 
     
@@ -79,4 +79,3 @@ if choice =="About":
     st.markdown("connect with me 😃 (https://www.linkedin.com/in/aakash-bagale/)")
 
 
-(884,761)
