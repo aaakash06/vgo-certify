@@ -2,9 +2,7 @@ import cv2
 import os
 import base64
 import streamlit as st
-import numpy
-import sys
-from PIL import Image, ImageDraw
+
 
 font = cv2.FONT_HERSHEY_SIMPLEX
 fontScale = 3
