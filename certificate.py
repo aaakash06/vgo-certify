@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw, ImageFont
 font = cv2.FONT_HERSHEY_SIMPLEX
 fontScale = 3
 activities = ["Get certificate","About"]
-st.sidebar.image("images\\logo.png", )
+st.sidebar.image("images/logo.png", )
 choice=st.sidebar.selectbox("Select Activty",activities)
 
 
@@ -39,7 +39,7 @@ def annotate(name):
     # st.markdown(f"**{clicked} clicked**" )
 
     # the path will be default to the defualt image
-    path = "certificate_templates\\OriginalFormat.png"
+    path = "certificate_templates/riginalFormat.png"
 
     
     certi = cv2.imread(path)
