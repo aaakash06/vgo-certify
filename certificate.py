@@ -20,7 +20,7 @@ contributions = {
        "Shubheksha Sharma": ["article", "Thriving Together" ],
        "Aananda Pandey": ["peom", "Floriculture For Future" ],
        "Dharma Acharya": ["peom", "The Garden of Friendship" ],
-       "Binita Chaudhari": ["article", "फूल खेतीमा जैविक मलको महत्व, चुनौती र समाधान" ],
+       "Binita Chaudhari": ["article", "फूल खेतीमा जैविक मलको महत्व, चुनौती र समाधान" ],
 }
 
 
@@ -41,18 +41,19 @@ def annotate(name):
 
     
     certi = cv2.imread(path)
-    font = cv2.FONT_HERSHEY_SIMPLEX
+    # font = cv2.FONT_HERSHEY_SIMPLEX
+    font=7
     # get boundary of this text
-    textsize = cv2.getTextSize(name, font, fontScale, 5)[0]
+    textsize = cv2.getTextSize(name, font, fontScale, 3)[0]
     
     # get coords based on boundary
     textX = (certi.shape[1] - textsize[0]) // 2
     textY = (certi.shape[0] + textsize[1]) // 2
 
-    cv2.putText(certi, name, (textX, 642),font,   fontScale, (0, 0, 0), thickness=5)    
+    cv2.putText(certi, name, (textX, 642),font, fontScale, (0, 0, 0), thickness=3)    
     typee = contributions[name][0]
     title = contributions[name][1]
-    original = cv2.putText(certi, f"{typee} titled \"{title}.\"", (983,759),font, 1, (0, 0, 0), thickness=3)    
+    original = cv2.putText(certi, f"{typee} titled \"{title}.\"", (983,759),cv2.FONT_HERSHEY_SIMPLEX, 1.4, (46, 93, 10), thickness=2)    
     cv2.imwrite("Certificate_{}.jpg".format(name),original)
 
     
@@ -76,3 +77,6 @@ if choice =="About":
     st.subheader("Cerficate App")
     st.markdown("</> by Aakash" )
     st.markdown("connect with me 😃 (https://www.linkedin.com/in/aakash-bagale/)")
+
+
+(884,761)
