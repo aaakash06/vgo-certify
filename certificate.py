@@ -2,6 +2,7 @@ import cv2
 import os
 import base64
 import streamlit as st
+import numpy as np
 
 
 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -51,9 +52,18 @@ def annotate(name):
     textY = (certi.shape[0] + textsize[1]) // 2
 
     cv2.putText(certi, name, (textX, 642),font, fontScale, (0, 0, 0), thickness=3)    
+    
+    # writing the description 
+    desc_font = cv2.FONT_HERSHEY_SIMPLEX
+    desc_font_scale = 1.4
     typee = contributions[name][0]
     title = contributions[name][1]
-    original = cv2.putText(certi, f"{typee} titled \"{title}.\"", (884,761),cv2.FONT_HERSHEY_SIMPLEX, 1.4, (46, 93, 10), thickness=2)    
+    desc = f"{typee} titled \"{title}.\""
+    desc_textsize = cv2.getTextSize(desc, desc_font, desc_font_scale, thickness=2)[0]
+    if desc_textsize[0]>910: 
+         original = cv2.putText(certi, desc, (884,761),desc_font, desc_font_scale , (46, 93, 10), thickness=2)
+    else: 
+        original = cv2.putText(certi, desc, (884,761),desc_font, desc_font_scale , (46, 93, 10), thickness=2)    
     cv2.imwrite("Certificate_{}.jpg".format(name),original)
 
     
