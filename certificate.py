@@ -20,7 +20,7 @@ contributions = {
        "Shubheksha Sharma": ["article", "Thriving Together" ],
        "Aananda Pandey": ["peom", "Floriculture For Future" ],
        "Dharma Acharya": ["peom", "The Garden of Friendship" ],
-       "Binita Chaudhari": ["article", "" ],
+       "Binita Chaudhari": ["article", "फूल खेतीमा जैविक मलको महत्व, चुनौती र समाधान" ],
 }
 
 
