@@ -39,7 +39,7 @@ def annotate(name):
     # st.markdown(f"**{clicked} clicked**" )
 
     # the path will be default to the defualt image
-    path = "certificate_templates/riginalFormat.png"
+    path = "certificate_templates/originalFormat.png"
 
     
     certi = cv2.imread(path)
