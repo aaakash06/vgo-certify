@@ -36,6 +36,11 @@ def get_binary_file_downloader_html(bin_file, file_label='File'):
 def annotate(name):
  
     st.write("Your certificate is ready.")
+    if os.path.isfile("Certificates/Certificate_{}.jpg".format(name)):
+        original = cv2.imread("Certificates/Certificate_{}.jpg".format(name))
+        st.image(original, caption=None, width=350, use_column_width=None, clamp=False, channels='BGR',output_format='PNG')
+        st.markdown(get_binary_file_downloader_html("Certificates/Certificate_{}.jpg".format(name), 'Certificate'), unsafe_allow_html=True)
+        return
     # st.markdown(f"**{clicked} clicked**" )
 
     # the path will be default to the defualt image
@@ -77,11 +82,11 @@ def annotate(name):
     draw.text((box[0],box[1]), desc, fill=green_rgb, font=font)       
     original = cv2.cvtColor(np.array(img_pill), cv2.COLOR_RGB2BGR)
     
-    cv2.imwrite("Certificate_{}.jpg".format(name),original)
+    cv2.imwrite("Certificates/Certificate_{}.jpg".format(name),original)
     
     if st.button("View certificate"):
         st.image(original, caption=None, width=350, use_column_width=None, clamp=False, channels='BGR',output_format='PNG')
-        st.markdown(get_binary_file_downloader_html("Certificate_{}.jpg".format(name), 'Certificate'), unsafe_allow_html=True)
+        st.markdown(get_binary_file_downloader_html("Certificates/Certificate_{}.jpg".format(name), 'Certificate'), unsafe_allow_html=True)
 
 
 if choice =="Get certificate":
