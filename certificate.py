@@ -3,6 +3,7 @@ import os
 import base64
 import streamlit as st
 import numpy as np
+from PIL import Image, ImageDraw, ImageFont
 
 
 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -51,21 +52,28 @@ def annotate(name):
     textX = (certi.shape[1] - textsize[0]) // 2
     textY = (certi.shape[0] + textsize[1]) // 2
 
-    cv2.putText(certi, name, (textX, 642),font, fontScale, (0, 0, 0), thickness=3)    
+    original = cv2.putText(certi, name, (textX, 642),font, fontScale, (0, 0, 0), thickness=3)    
     
-    # writing the description 
-    desc_font = cv2.FONT_HERSHEY_SIMPLEX
-    desc_font_scale = 1.4
+    # writing the description
     typee = contributions[name][0]
-    title = contributions[name][1]
+    title = contributions[name][1] 
+    target_width = 910
     desc = f"{typee} titled \"{title}.\""
-    desc_textsize = cv2.getTextSize(desc, desc_font, desc_font_scale, thickness=2)[0]
-    if desc_textsize[0]>910: 
-         original = cv2.putText(certi, desc, (884,761),desc_font, desc_font_scale , (46, 93, 10), thickness=2)
-    else: 
-        original = cv2.putText(certi, desc, (884,761),desc_font, desc_font_scale , (46, 93, 10), thickness=2)    
-    cv2.imwrite("Certificate_{}.jpg".format(name),original)
+    origin =(884,761)
+    green_rgb= (10, 93, 46)
+    font_path = "arial.ttf"
+    font_size = 1
+    font = ImageFont.truetype(font_path, font_size)
+    img_pill = Image.fromarray(cv2.cvtColor(original, cv2.COLOR_BGR2RGB))
+    draw = ImageDraw.Draw(img_pill)
+    while draw.textlength(desc, font=font) < target_width:
+        font_size += 1
+        font = ImageFont.truetype(font_path, font_size)
+    draw.text((881,720), desc, font=font, fill=green_rgb)
+    original = cv2.cvtColor(np.array(img_pill), cv2.COLOR_RGB2BGR)
 
+    original = cv2.cvtColor(np.array(original), cv2.COLOR_RGB2BGR)
+    cv2.imwrite("Certificate_{}.jpg".format(name),original)
     
     if st.button("View certificate"):
         st.image(original, caption=None, width=350, use_column_width=None, clamp=False, channels='BGR',output_format='PNG')
