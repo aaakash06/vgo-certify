@@ -11,7 +11,7 @@ fontScale = 3
 activities = ["Get certificate","About"]
 st.sidebar.image("images/logo.png", )
 choice=st.sidebar.selectbox("Select Activty",activities)
-
+root_path = os.path.dirname(__file__) + '/'
 
 contributions = {
     "Nirpa Gautam": ["article", "Thriving Together" ],
@@ -64,7 +64,7 @@ def annotate(name):
     font_path = "arial.ttf"
     font_size = 100
     size = None
-    font = ImageFont.truetype(font_path, font_size)
+    font = ImageFont.truetype(root_path+font_path, font_size)
     img_pill = Image.fromarray(cv2.cvtColor(original, cv2.COLOR_BGR2RGB))
     draw = ImageDraw.Draw(img_pill)
     box = ((881, 722, 1805, 765))
