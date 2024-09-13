@@ -57,9 +57,7 @@ def annotate(name):
     # writing the description
     typee = contributions[name][0]
     title = contributions[name][1] 
-    target_width = 910
     desc = f"{typee} titled \"{title}.\""
-    # origin =(884,761)
     origin =(881,720)
     green_rgb= (10, 93, 46)
     green_hex = "#0a5d2e"
@@ -69,28 +67,16 @@ def annotate(name):
     font = ImageFont.truetype(font_path, font_size)
     img_pill = Image.fromarray(cv2.cvtColor(original, cv2.COLOR_BGR2RGB))
     draw = ImageDraw.Draw(img_pill)
-    # while draw.textlength(desc, font=font) < target_width:
-    #     font_size += 1
-    #     font = ImageFont.truetype(font_path, font_size)
-    # draw.text((881,720), desc, font=font, fill=green_rgb)
-    # original = cv2.cvtColor(np.array(img_pill), cv2.COLOR_RGB2BGR)
-    
-    
-    
-    
-    box = ((881, 733, 1805, 769))
-    draw.rectangle(box, outline="#000")
-    while (size is None or size[0] > box[2] - box[0] or size[1] > box[3] - box[1]) and font_size > 0:
+    box = ((881, 722, 1805, 762))
+    # draw.rectangle(box, outline="#000")
+    while (size is None or size[2]-size[0] > (box[2] - box[0]) or size[3]-size[1] > (box[3] - box[1])) and font_size > 0:
         font = ImageFont.truetype(font_path, font_size)
-        size = font.getsize_multiline(desc)
+        size = draw.textbbox((box[0], box[1]), desc, font=font)
         font_size -= 1
-    # draw.multiline_text((box[0], box[1]), desc, green_hex , font)
+    
+    draw.text((box[0],box[1]), desc, fill=green_rgb, font=font)       
     original = cv2.cvtColor(np.array(img_pill), cv2.COLOR_RGB2BGR)
     
-    
-    
-
-    original = cv2.cvtColor(np.array(original), cv2.COLOR_RGB2BGR)
     cv2.imwrite("Certificate_{}.jpg".format(name),original)
     
     if st.button("View certificate"):
