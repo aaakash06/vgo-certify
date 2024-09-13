@@ -44,12 +44,15 @@ def annotate(name):
     font = cv2.FONT_HERSHEY_SIMPLEX
     # get boundary of this text
     textsize = cv2.getTextSize(name, font, fontScale, 5)[0]
-
+    
     # get coords based on boundary
     textX = (certi.shape[1] - textsize[0]) // 2
     textY = (certi.shape[0] + textsize[1]) // 2
 
-    original = cv2.putText(certi, name, (textX, 642),font,   fontScale, (0, 0, 0), thickness=5)    
+    cv2.putText(certi, name, (textX, 642),font,   fontScale, (0, 0, 0), thickness=5)    
+    typee = contributions[name][0]
+    title = contributions[name][1]
+    original = cv2.putText(certi, f"{typee} titled \"{title}.\"", (983,759),font, 1, (0, 0, 0), thickness=3)    
     cv2.imwrite("Certificate_{}.jpg".format(name),original)
 
     
