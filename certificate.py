@@ -20,8 +20,13 @@ contributions = {
     "Suman Neupane": ["article", "Industrial Revolution to Organic Revival" ],
        "Satya Bhattarai": ["article", "Floriculture, Pollinators, and Biodiversity" ],
        "Shubheksha Sharma": ["article", "Thriving Together" ],
-       "Aananda Pandey": ["peom", "Floriculture For Future" ],
-       "Dharma Acharya": ["peom", "The Garden of Friendship" ],
+       "Aananda Pandey": ["article", "Garden Of Sindhuli" ],
+       "Dharma Acharya": ["peom", "Floriculture For Future" ],
+       "Rosan Godar": ["peom", "The Garden of Friendship" ],
+       "Ameeca Maharjan": ["art", "" ],
+       "Sweta Karki": ["art", "" ],
+       "Sianjen Thiyagarajah": ["photography", "" ],
+       
     #    "Binita Chaudhari": ["article", "फूल खेतीमा जैविक मलको महत्व, चुनौती र समाधान" ],
 }
 
@@ -62,7 +67,10 @@ def annotate(name):
     # writing the description
     typee = contributions[name][0]
     title = contributions[name][1] 
-    desc = f"{typee} titled \"{title}.\""
+    if typee in ["art","photography"]:
+        desc = f"{typee} reflecting nature and its intricacies."     
+    else: 
+       desc = f"{typee} titled \"{title}.\""
     origin =(881,720)
     green_rgb= (10, 93, 46)
     green_hex = "#0a5d2e"
