@@ -14,7 +14,7 @@ choice=st.sidebar.selectbox("Select Activty",activities)
 root_path = os.path.dirname(__file__) + '/'
 
 contributions = {
-    "Nirpa Gautam": ["article", "Thriving Together" ],
+    "Nripa Gautam": ["article", "Thriving Together" ],
     "Sarojina Subedi": ["article", "Butterfly as a Pollinator" ],
     "Abash Kaphle": ["article", "Future Trend of Pollinators" ],
     "Suman Neupane": ["article", "Industrial Revolution to Organic Revival" ],
@@ -25,7 +25,7 @@ contributions = {
        "Rosan Godar": ["peom", "The Garden of Friendship" ],
        "Ameeca Maharjan": ["art", "" ],
        "Sweta Karki": ["art", "" ],
-       "Sianjen Thiyagarajah": ["photography", "" ],
+       "https://www.linkedin.com/in/aakash-bagale/": ["photography", "" ],
        
     #    "Binita Chaudhari": ["article", "फूल खेतीमा जैविक मलको महत्व, चुनौती र समाधान" ],
 }
